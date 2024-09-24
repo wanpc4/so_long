@@ -11,12 +11,9 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <unistd.h>
 #include "../minilibx-lib/mlx.h"
 
-typedef struct s_data {
-    void    *img;
-    char    *addr;
-    int     bits_per_pixel;
-    int     line_length;
-    int     endian;
-}       t_data;
+struct color_grade{
+    unsigned long color; //Example: 0x00FF0000 (red)
+};
