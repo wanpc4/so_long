@@ -1,0 +1,8 @@
+//Make sure minilibx-lib is already compiled:
+cd minilibx-lib && make && cd ..
+
+//This is a command of execution:
+gcc srcs/so_long.c -o so_long -L/home/wwan-ab-/Desktop/so_long/minilibx-lib -lmlx -lXext -lX11 -lm
+
+//Then run this:
+./so_long

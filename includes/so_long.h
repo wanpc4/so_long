@@ -19,6 +19,8 @@
 #include <string.h> //strerror()
 #include <fcntl.h> //open()
 #include "../minilibx-lib/mlx.h"
+#include <X11/X.h>
+#include <X11/keysym.h>
 
 struct color_grade{
     unsigned long color; //Example: 0x00FF0000 (red)
@@ -28,8 +30,6 @@ typedef struct s_data
 {
     void    *mlx_ptr; //MLX pointer
     void    *win_ptr; //MLX window pointer
-    void    *textures[5]; //MLX image pointers (on the stack)
-    t_map   *map; //Map pointer (contains map details - preferably kept on the stack)
 }   t_data;
 
 int on_destroy(t_data *data)
@@ -44,7 +44,23 @@ int on_destroy(t_data *data)
 int on_keypress(int keysym, t_data *data)
 {
     (void)data;
-    printf("Pressed key: %d\\n");
+    printf("Pressed key: %d\\n", keysym);
+    return (0);
+}
+
+int render_frame(t_data *data)
+{
+    mlx_clear_window(data->mlx_ptr, data->win_ptr); //Clear the window
+
+    int x;
+    int y;
+    for (y = 0; y < 400; y++)
+    {
+        for (x = 0; x < 600; x++)
+        {
+            mlx_pixel_put(data->mlx_ptr, data->win_ptr, x, y, 0x00FF00);
+        }
+    }
     return (0);
 }
 

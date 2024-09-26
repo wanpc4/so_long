@@ -14,13 +14,12 @@
 
 int main(void)
 {
-    void    *mlx_ptr;
-    void    *win_ptr;
+    t_data data;
 
-    mlx_ptr = mlx_init();
+    data.mlx_ptr = mlx_init();
     if (!data.mlx_ptr)
         return (1); //If fails
-    win_ptr = mlx_new_window(data.mlx_ptr, 600, 400, "Hello :)");
+    data.win_ptr = mlx_new_window(data.mlx_ptr, 600, 400, "Hello :)");
     if (!data.win_ptr) //If window can't open
         return (free(data.mlx_ptr), 1); //Deallocate memory
     
@@ -30,7 +29,12 @@ int main(void)
     //Register destroy hook
     mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
 
-    //Loop over the MLX pointer
-    mlx_loop(data.mlx_ptr);
+    //Main loop
+    while (1)
+    {
+        render_frame(&data);
+        //Loop over the MLX pointer
+        mlx_loop(data.mlx_ptr);
+    }
     return (0);
 }
