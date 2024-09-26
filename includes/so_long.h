@@ -58,7 +58,7 @@ int render_frame(t_data *data)
     {
         for (x = 0; x < 600; x++)
         {
-            mlx_pixel_put(data->mlx_ptr, data->win_ptr, x, y, 0x00FF00);
+            mlx_pixel_put(data->mlx_ptr, data->win_ptr, x, y, 0x8000FF);
         }
     }
     return (0);
