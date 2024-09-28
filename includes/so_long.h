@@ -19,6 +19,8 @@
 #include <string.h> //strerror()
 #include <fcntl.h> //open()
 #include "../minilibx-lib/mlx.h"
+#include "../Libft/libft.h" //Include Libft
+#include "../get_next_line/get_next_line.h" //Include get_next_line
 #include <X11/X.h>
 #include <X11/keysym.h>
 
