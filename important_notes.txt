@@ -1,5 +1,5 @@
 //Make sure minilibx-lib is already compiled:
-cd minilibx-lib && make && cd ..
+cd minilibx-lib && make && cd .. && cd Libft && make && cd ..
 
 //This is a command of execution:
 
@@ -7,13 +7,16 @@ cd minilibx-lib && make && cd ..
 gcc srcs/so_long.c -o so_long -L/home/wwan-ab-/Desktop/so_long/minilibx-lib -lmlx -lXext -lX11 -lm
 
 //When you open MacBook:
-gcc srcs/so_long.c -o so_long -L/home/idriss/Desktop/so_long/minilibx-lib -lmlx -lXext -lX11
+gcc srcs/so_long.c srcs/generate_map.c -o so_long \
+-L/home/idriss/Desktop/so_long/minilibx-lib -lmlx \
+-L/home/idriss/Desktop/so_long/Libft -lft -lXext -lX11
+
 
 //Then run this:
-./so_long
+./so_long maps/map1.ber 
 
 //To make erase everything up...
-cd minilibx-lib && make clean && cd .. && rm so_long
+cd minilibx-lib && make clean && cd ../Libft && make fclean && cd .. && rm so_long
 
 If you have any confusion, doubt, or whatever it is that makes you feel bad. Read this documentations:
 https://harm-smits.github.io/42docs/libs/minilibx
