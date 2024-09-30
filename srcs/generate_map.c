@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   generate_map.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wwan-ab- <wwan-ab-@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/30 18:56:18 by wwan-ab-          #+#    #+#             */
+/*   Updated: 2024/09/30 18:56:21 by wwan-ab-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
@@ -63,12 +73,14 @@ void parse_map(t_map *map)
     printf("Parsed map dimensions: %d x %d\n", map->x, map->y);
 }
 
-
 void load_images(t_map *map)
 {
     map->img.empty = mlx_xpm_file_to_image(map->mlx, "textures/empty_space.xpm", &map->x, &map->y);
     map->img.wall = mlx_xpm_file_to_image(map->mlx, "textures/wall.xpm", &map->x, &map->y);
-    //map->img.player_left1 = mlx_xpm_file_to_image(map->mlx, "textures/wall.xpm", &map->x, &map->y);
+    //map->img.player_right = mlx_xpm_file_to_image(map->mlx, "", &map->x, &map->y);
+    //map->img.player_left = mlx_xpm_file_to_image(map->mlx, "", &map->x, &map->y);
+    //map->img.player_up = mlx_xpm_file_to_image(map->mlx, "", &map->x, &map->y);
+    //map->img.player_down = mlx_xpm_file_to_image(map->mlx, "", &map->x, &map->y);
 }
 
 int render_frame(t_map *map)
