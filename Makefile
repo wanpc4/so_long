@@ -1,27 +1,34 @@
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+NAME = so_long
+
+LIBFT_A = libft.a
+
+CFLAGS = -Wall -Wextra -Werror -I. -fsanitize=address
+
+MLX_FLAGS = -L/home/wwan-ab-/Desktop/so_long/minilibx-lib -lmlx \
+			-L/home/wwan-ab-/Desktop/so_long/Libft -lft -lXext -lX11
 
 REMOVE = rm -rf
 
-SOURCES = srcs/so_long.c \
-		  includes/so_long.h \
-		  minilibx-lib/libmlx_Linux.a \
+SOURCES = minilibx-lib/libmlx_Linux.a \
 		  minilibx-lib/libmlx.a \
 		  Libft/libft.a
 
-NAME = so_long
+MAKE_SOURCES = srcs/so_long.c \
+			   srcs/generate_map.c
 
 $(NAME) :
 		make all -C minilibx-lib
 		make all -C Libft
-		$(CC) $(CFLAGS) $(SOURCES) -o $(NAME)
+		$(CC) $(CFLAGS) $(MAKE_SOURCES) -o $(NAME) \
+		$(MLX_FLAGS)
 
 all: $(NAME)
 
 fclean: clean
 		$(REMOVE) $(NAME)
-		make fclean -C minilibx-lib
+		$(REMOVE) $(LIBFT_A)
 		make fclean -C Libft
 
 clean:

@@ -4,7 +4,9 @@ cd minilibx-lib && make && cd .. && cd Libft && make && cd ..
 //This is a command of execution:
 
 //When you're at 42 school (At Linux section):
-gcc srcs/so_long.c -o so_long -L/home/wwan-ab-/Desktop/so_long/minilibx-lib -lmlx -lXext -lX11 -lm
+gcc srcs/so_long.c srcs/generate_map.c -o so_long \
+-L/home/wwan-ab-/Desktop/so_long/minilibx-lib -lmlx \
+-L/home/wwan-ab-/Desktop/so_long/Libft -lft -lXext -lX11
 
 //When you open MacBook:
 gcc srcs/so_long.c srcs/generate_map.c -o so_long \
@@ -22,3 +24,7 @@ If you have any confusion, doubt, or whatever it is that makes you feel bad. Rea
 https://harm-smits.github.io/42docs/libs/minilibx
 https://reactive.so/post/42-a-comprehensive-guide-to-so_long/
 https://42-cursus.gitbook.io/guide/rank-02/so_long/core-concepts
+
+1) Map 
+2) Movements
+3) Characters

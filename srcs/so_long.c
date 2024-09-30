@@ -14,17 +14,27 @@
 
 int on_destroy(t_data *data)
 {
-    mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-    mlx_destroy_display(data->mlx_ptr);
-    free(data->mlx_ptr);
-    exit(0);
+    mlx_destroy_window(data->mlx_ptr, data->win_ptr); // Closes the MLX window
+    mlx_destroy_display(data->mlx_ptr); //Destroys the MLX display
+    free(data->mlx_ptr); //Frees memory allocated for MLX
+    exit(0); //Exits the program
     return (0);
 }
 
 int on_keypress(int keysym, t_data *data)
 {
-    (void)data;
-    printf("Pressed key: %d\n", keysym);
+    (void)data; // Unused parameter
+    char *direction;
+    
+    if (keysym == 65362)
+        direction = "Up";
+    else if (keysym == 65364)
+        direction = "Down";
+    else if (keysym == 65361)
+        direction = "Left";
+    else if (keysym == 65363)
+        direction = "Right";
+    printf("Pressed key: %s\n", direction); // Prints the key that was pressed
     return (0);
 }
 
