@@ -12,20 +12,6 @@
 
 #include "../includes/so_long.h"
 
-//To free from memory leak
-void    free_tab(char **tab)
-{
-    int i;
-
-    i = 0;
-    while (tab[i])
-    {
-        free(tab[i]);
-        i++;
-    }
-    free(tab);
-}
-
 int     map_size(char **size)
 {
     int width;

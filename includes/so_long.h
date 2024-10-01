@@ -34,22 +34,20 @@ typedef struct s_data
 typedef struct s_map
 {
     int         fd;
+    int         y;
+    int         x;
+    int         map_height;
+    int         map_width;
+    int         exit;
+    int         moves;
+    int         countPlayer;
+    int         countColumn;
+    int         countExit;
     char        *line;
     char        *file;
     char        **map;
     char        **copy;
     char        *filename;
-    int         y;
-    int         x;
-    int         map_height;
-    int         map_width;
-    int         e;
-    int         c;
-    int         c_check;
-    int         e_check;
-    int         p;
-    int         exit;
-    int         moves;
     void        *mlx;
     void        *window;
     void        *character;
@@ -58,12 +56,16 @@ typedef struct s_map
 
 void    parse_map(t_map *map);
 void    load_images(t_map *map);
-void    free_tab(char **tab);
 int     render_frame(t_map *map);
 int     on_destroy(t_data *data);
 int     on_keypress(int keysym, t_data *data);
 int     read_map(t_map *game, char *argv[]);
 int     map_size(char **size);
 int     add_line(t_map *game, char *line);
+
+/*
+    Functions for error handling
+*/
+void    wrong_input(int sign);
 
 #endif
