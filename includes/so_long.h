@@ -20,6 +20,7 @@
 #include <fcntl.h> //open()
 #include "../minilibx-lib/mlx.h"
 #include "../Libft/libft.h" //Include Libft
+#include "../get_next_line/get_next_line.h" //Include get_next_line
 #include <X11/X.h>
 #include <X11/keysym.h>
 
@@ -30,40 +31,18 @@ typedef struct s_data
 
 }   t_data;
 
-typedef struct s_player
-{
-    int x;
-    int y;
-}   t_player;
-
-typedef struct s_img
-{
-    void    *empty;
-    void    *collectible;
-    void    *wall;
-    void    *exit;
-    void    *player_left1;
-    void    *player_right1;
-    void    *player_up1;
-    void    *player_down1;
-    void    *player_left2;
-    void    *player_right2;
-    void    *player_up2;
-    void    *player_down2;
-    void    *enemy;
-    
-}   t_img;
-
 typedef struct s_map
 {
     int         fd;
     char        *line;
     char        *file;
-    char        **array;
+    char        **map;
     char        **copy;
     char        *filename;
     int         y;
     int         x;
+    int         map_height;
+    int         map_width;
     int         e;
     int         c;
     int         c_check;
@@ -73,15 +52,18 @@ typedef struct s_map
     int         moves;
     void        *mlx;
     void        *window;
-    t_img       img;
-    t_player    player;
+    void        *character;
+    void        *wall;
 }   t_map;
 
 void    parse_map(t_map *map);
 void    load_images(t_map *map);
+void    free_tab(char **tab);
 int     render_frame(t_map *map);
 int     on_destroy(t_data *data);
 int     on_keypress(int keysym, t_data *data);
-int     download_map();
+int     read_map(t_map *game, char *argv[]);
+int     map_size(char **size);
+int     add_line(t_map *game, char *line);
 
 #endif

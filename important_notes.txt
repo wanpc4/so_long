@@ -28,3 +28,21 @@ https://42-cursus.gitbook.io/guide/rank-02/so_long/core-concepts
 1) Map 
 2) Movements
 3) Characters
+4) Make a header called 'Macros':
+
+    For example:
+        # define TILE 32
+
+5) Put silencing on Makefile
+    For example:
+        $mkdir -p 
+
+6) Conditional statement in Makefile
+
+7) Don't get confuse with x and y.
+
+8) Focus on filename handling. extension = .ber -> Error handling
+
+9) get_next_line(). -> Make sure fd is valid. - Download file = download_map()
+
+10) Then focus on game

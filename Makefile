@@ -6,8 +6,8 @@ LIBFT_A = libft.a
 
 CFLAGS = -Wall -Wextra -Werror -I. -fsanitize=address
 
-MLX_FLAGS = -L/home/wwan-ab-/Desktop/so_long/minilibx-lib -lmlx \
-			-L/home/wwan-ab-/Desktop/so_long/Libft -lft -lXext -lX11
+MLX_FLAGS = -L/home/idriss/Desktop/so_long/minilibx-lib -lmlx \
+			-L/home/idriss/Desktop/so_long/Libft -lft -lXext -lX11
 
 REMOVE = rm -rf
 
