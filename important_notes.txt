@@ -52,5 +52,8 @@ map: This is a member (field) of the structure that game points to.
 ->: This operator dereferences the pointer and accesses the specified member of the structure in one step.
 
 
+At home:
+gcc srcs/so_long.c srcs/generate_map.c srcs/error_checker.c srcs/map_specs.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c -o so_long -L/home/idriss/Desktop/so_long/minilibx-lib -lmlx -L/home/idriss/Desktop/so_long/Libft -lft -lXext -lX11
 
-gcc srcs/so_long.c srcs/generate_map.c srcs/character_control.c srcs/error_checker.c srcs/map_specs.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c -o so_long -L/home/idriss/Desktop/so_long/minilibx-lib -lmlx -L/home/idriss/Desktop/so_long/Libft -lft -lXext -lX11
+At campus:
+gcc srcs/so_long.c srcs/generate_map.c srcs/error_checker.c srcs/map_specs.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c -o so_long -L/home/wwan-ab-/Desktop/so_long/minilibx-lib -lmlx -L/home/wwan-ab-/Desktop/so_long/Libft -lft -lXext -lX11

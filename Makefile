@@ -4,19 +4,24 @@ NAME = so_long
 
 LIBFT_A = libft.a
 
-CFLAGS = -Wall -Wextra -Werror -I. -fsanitize=address
+#CFLAGS = -Wall -Wextra -Werror -I. -fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror -I.
 
-MLX_FLAGS = -L/home/idriss/Desktop/so_long/minilibx-lib -lmlx \
-			-L/home/idriss/Desktop/so_long/Libft -lft -lXext -lX11
+MLX_FLAGS = -L/home/wwan-ab-/Desktop/so_long/minilibx-lib -lmlx \
+			-L/home/wwan-ab-/Desktop/so_long/Libft -lft -lXext -lX11
 
 REMOVE = rm -rf
 
 SOURCES = minilibx-lib/libmlx_Linux.a \
 		  minilibx-lib/libmlx.a \
-		  Libft/libft.a
+		  Libft/libft.a 
 
 MAKE_SOURCES = srcs/so_long.c \
-			   srcs/generate_map.c
+			   srcs/generate_map.c \
+			   srcs/map_specs.c \
+			   srcs/error_checker.c \
+			   get_next_line/get_next_line.c \
+		  	   get_next_line/get_next_line_utils.c
 
 $(NAME) :
 		make all -C minilibx-lib

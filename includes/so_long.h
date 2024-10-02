@@ -20,7 +20,7 @@
 #include <fcntl.h> //open()
 #include "../minilibx-lib/mlx.h"
 #include "../Libft/libft.h" //Include Libft
-#include "../get_next_line/get_next_line.h" //Include get_next_line
+#include "get_next_line.h" //Include get_next_line
 #include <X11/X.h>
 #include <X11/keysym.h>
 
@@ -36,26 +36,24 @@ typedef struct s_map
     int         countPlayer;
     int         countColumn;
     int         countExit;
+    int         count;
     char        *line;
     char        *file;
     char        **map;
-    char        **copy;
     char        *filename;
     void        *mlx_ptr;
     void        *window_ptr;
     void        *wall;
     void        *character;
     void        *empty_space;
+    void        *collectable;
 }   t_map;
 
-void    parse_map(t_map *map);
 void    load_images(t_map *map);
 int     render_frame(t_map *map);
 int     on_destroy(t_map *data);
-int     on_keypress(int keysym, t_map *data);
 int     read_map(t_map *game, char *argv[]);
-int     map_size(char *size);
-int     add_line(t_map *game, char *line);
+int     controls_working(int cmd, t_map *game);
 
 /*
     Functions for error handling

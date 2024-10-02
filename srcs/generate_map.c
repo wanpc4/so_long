@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-int     map_size(char *size)
+static  int map_size(char *size)
 {
     int width;
 
@@ -24,77 +24,33 @@ int     map_size(char *size)
     return (width);
 }
 
-// int     add_line(t_map *game, char *line)
-// {
-//     char    **temp;
-//     int     i;
-
-//     if (!line)
-//         return (0);
-
-//     i = 0;
-//     game->map_height++;
-//     temp = (char **)malloc(sizeof(char *) * (game->map_height + 1));
-//     temp[game->map_height] = NULL;
-//     while (i < game->map_height - 1)
-//     {
-//         temp[i] = game->map[i];
-//         i++;
-//     }
-//     temp[i] = line;
-//     if (game->map)
-//         free(game->map);
-//     game->map = temp;
-//     return (1);
-// }
-
-int add_line(t_map *game, char *line)
+static  int add_line(t_map *game, char *line)
 {
-    char **temp;
-    int i;
+    char    **temp;
+    int     i;
 
-    // Check if the line is NULL
     if (!line)
         return (0);
-
-    // Increment the map height
+    i = 0;
     game->map_height++;
-    
-    // Allocate memory for the new map
     temp = (char **)malloc(sizeof(char *) * (game->map_height + 1));
-    if (!temp)
+    temp[game->map_height] = NULL;
+    while (i < game->map_height - 1)
     {
-        perror("Failed to allocate memory");
-        return (0);
+        temp[i] = game->map[i];
+        i++;
     }
-    temp[game->map_height] = NULL; // Null-terminate the array
-
-    // Copy existing lines into the new temp array
-    for (i = 0; i < game->map_height - 1; i++)
-    {
-        temp[i] = game->map[i]; // Copy existing lines
-    }
-    temp[i] = line; // Add the new line
-
-    // Free the previous map if it's already allocated
+    temp[i] = line;
     if (game->map)
-    {
-        for (int j = 0; j < game->map_height - 1; j++)
-        {
-            free(game->map[j]); // Free each line
-        }
-        free(game->map); // Free the array of lines
-    }
-
-    game->map = temp; // Update the map pointer
+        free(game->map);
+    game->map = temp;
     return (1);
 }
-
 
 int read_map(t_map *game, char *argv[])
 {
     char    *rMap;
-
+    
     game->fd = open(argv[1], O_RDONLY);
     if (game->fd < 0)
         return (0);
@@ -104,7 +60,7 @@ int read_map(t_map *game, char *argv[])
         if (!add_line(game, rMap))
             break ;
     }
-    close(game->fd);
+    close (game->fd);
     game->map_width = map_size(game->map[0]);
     return (1);
 }

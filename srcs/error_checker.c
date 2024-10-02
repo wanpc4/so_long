@@ -7,26 +7,28 @@ void    wrong_input(int sign)
         printf("./so_long maps/filename.ber");
     else if (sign == 2)
     {
-        printf("Something does not seems right.");
+        printf("Something does not seems right.\n");
         printf("It can be a character, collectable, or exit.");
     }
 }
 
-int     horizontal_wall(t_map *game)
+static  int  horizontal_wall(t_map *game)
 {
     int x;
+    int y;
 
-    x = 0;
-    while (x < game->map_width)
+    x = game->map_width;
+    y = 0;
+    while (y < x)
     {
-        if (game->map[0][x] == '1' && game->map[game->map_height - 1][x] == '1')
+        if (game->map[0][x] == '1' && game->map[game->map_height - 1][y] == '1')
             return (0);
-        x++;
+        y++;
     }
     return (1);
 }
 
-int     vertical_wall(t_map *game)
+static  int  vertical_wall(t_map *game)
 {
     int height;
     int width;
@@ -42,7 +44,7 @@ int     vertical_wall(t_map *game)
     return (1);
 }
 
-void    if_walls(t_map *game)
+static  void    if_walls(t_map *game)
 {
     int vertical;
     int horizontal;
@@ -56,13 +58,14 @@ void    if_walls(t_map *game)
     }
 }
 
-void    count_checker(t_map *game, int height, int width)
+static  void    count_checker(t_map *game, int height, int width)
 {
     if (game->map[height][width] != '1' && game->map[height][width] != '0' && game->map[height][width] != 'P' && game->map[height][width] != 'E' && game->map[height][width] != 'C' && game->map[height][width] != '\n')
     {
         printf("\nError at %c\n", game->map[height][width]);
         on_destroy(game);
     }
+
     if (game->map[height][width] == 'C')
         game->countColumn++;
     if (game->map[height][width] == 'P')
@@ -87,7 +90,8 @@ void    character_valid(t_map *game)
         }
         height++;
     }
-    while (!(game->countPlayer == 1 && game->countColumn > 1 && game->countExit == 1))
+    printf("%d\n", game->countPlayer);
+    if (!(game->countPlayer == 1))
     {
         wrong_input(2);
         on_destroy(game);
