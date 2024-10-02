@@ -6,22 +6,22 @@ void    wrong_input(int sign)
     if (sign == 1)
         printf("./so_long maps/filename.ber");
     else if (sign == 2)
+    {
         printf("Something does not seems right.");
         printf("It can be a character, collectable, or exit.");
+    }
 }
 
 int     horizontal_wall(t_map *game)
 {
     int x;
-    int y;
 
-    x = game->map_width;
-    y = 0;
-    while (y < x)
+    x = 0;
+    while (x < game->map_width)
     {
-        if (game->map[0][x] == '1' && game->map[game->map_height - 1][y] == '1')
+        if (game->map[0][x] == '1' && game->map[game->map_height - 1][x] == '1')
             return (0);
-        y++;
+        x++;
     }
     return (1);
 }
@@ -33,7 +33,7 @@ int     vertical_wall(t_map *game)
 
     height = 0;
     width = game->map_width;
-    while (map_height < game->map_height)
+    while (height < game->map_height)
     {
         if (!(game->map[height][0] == '1' && game->map[height][width - 1] == '1'))
             return (0);
@@ -80,7 +80,7 @@ void    character_valid(t_map *game)
     while (height < game->map_height - 1)
     {
         width = 0;
-        while (width <= game->map_width)
+        while (width < game->map_width)
         {
             count_checker(game, height, width);
             width++;

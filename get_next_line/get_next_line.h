@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include "../Libft/libft.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000
@@ -26,8 +27,8 @@ char	*get_next_line(int fd);
 char	*ft_read_str(int fd, char *left_str);
 char	*ft_extract_line(char *left_str);
 char	*ft_update_str(char *left_str);
-size_t	ft_strlen(char *s);
-char	*ft_strchr(char *s, int c);
-char	*ft_strjoin(char *left_str, char *buff);
+size_t	ft_strlen(const char *s);
+char	*ft_strchr(const char *s, int c);
+char	*gnl_strjoin(char *s1, char *s2);
 
 #endif

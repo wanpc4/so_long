@@ -24,13 +24,6 @@
 #include <X11/X.h>
 #include <X11/keysym.h>
 
-typedef struct s_data
-{
-    void    *mlx_ptr; //MLX pointer
-    void    *win_ptr; //MLX window pointer
-
-}   t_data;
-
 typedef struct s_map
 {
     int         fd;
@@ -48,24 +41,26 @@ typedef struct s_map
     char        **map;
     char        **copy;
     char        *filename;
-    void        *mlx;
-    void        *window;
-    void        *character;
+    void        *mlx_ptr;
+    void        *window_ptr;
     void        *wall;
+    void        *character;
+    void        *empty_space;
 }   t_map;
 
 void    parse_map(t_map *map);
 void    load_images(t_map *map);
 int     render_frame(t_map *map);
-int     on_destroy(t_data *data);
-int     on_keypress(int keysym, t_data *data);
+int     on_destroy(t_map *data);
+int     on_keypress(int keysym, t_map *data);
 int     read_map(t_map *game, char *argv[]);
-int     map_size(char **size);
+int     map_size(char *size);
 int     add_line(t_map *game, char *line);
 
 /*
     Functions for error handling
 */
 void    wrong_input(int sign);
+void    check_errors(t_map *game);
 
 #endif
