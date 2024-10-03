@@ -1,4 +1,16 @@
-#include "../includes/so_long.h" // Ensure this is included to declare `character_move`
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   character_controls.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wwan-ab- <wwan-ab-@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/04 06:36:22 by wwan-ab-          #+#    #+#             */
+/*   Updated: 2024/10/04 06:36:45 by wwan-ab-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/so_long.h"
 
 void    game_status(int sign)
 {
