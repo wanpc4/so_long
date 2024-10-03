@@ -20,9 +20,9 @@ MAKE_SOURCES = srcs/so_long.c \
 			   srcs/generate_map.c \
 			   srcs/map_specs.c \
 			   srcs/error_checker.c \
-			   srcs/character_controls.c \
 			   get_next_line/get_next_line.c \
-		  	   get_next_line/get_next_line_utils.c
+		  	   get_next_line/get_next_line_utils.c 
+#    srcs/character_controls.c
 
 $(NAME) :
 		make all -C minilibx-lib

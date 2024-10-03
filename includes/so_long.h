@@ -57,6 +57,7 @@ typedef struct s_map
     int         countColumn;
     int         countExit;
     int         countMove;
+    int         collectable_item;
 
     char        **map;
 

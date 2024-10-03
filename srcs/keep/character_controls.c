@@ -5,7 +5,7 @@ void    game_status(int sign)
     if (sign == 1)
         printf("You won the game, parabéns!");
     else if (sign == 2)
-        printf("Error");
+        printf("Try again.");
 }
 
 void    character_move(t_map *game, int height_y, int width_x, int character)
@@ -20,8 +20,8 @@ void    character_move(t_map *game, int height_y, int width_x, int character)
     else if ((game->map[height_y][width_x] == EMPTY_SPACE) || (game->map[height_y][width_x] == COLLECTABLE))
     {
         game->map[game->y][game->x] = EMPTY_SPACE;
-        game->map[height_y][width_x] = START_POINT;
-
+        if (game->map[game->y][game->x] == COLLECTABLE)
+            game->countColumn--;
         game->x = width_x;
         game->y = height_y;
 

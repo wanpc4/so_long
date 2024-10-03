@@ -53,7 +53,7 @@ static void if_walls(t_map *game)
     horizontal = horizontal_wall(game);
     if (!vertical || !horizontal)
     {
-        printf("\nMissing walls");
+        perror("\nMissing walls");
         on_destroy(game);
     }
 }
@@ -90,7 +90,12 @@ void    character_valid(t_map *game)
         }
         height++;
     }
-    if (!(game->countPlayer == 1))
+    // if (!(game->countPlayer == 1))
+    // {
+    //     wrong_input(2);
+    //     on_destroy(game);
+    // }
+    if (!(game->countPlayer == 1 && game->countColumn > 1 && game->countExit == 1))
     {
         wrong_input(2);
         on_destroy(game);
