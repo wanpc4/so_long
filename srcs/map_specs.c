@@ -40,15 +40,15 @@ int render_frame(t_map *game)
         width = 0;
         while (game->map[height][width])
         {
-            if (game->map[height][width] == '1')
+            if (game->map[height][width] == WALL)
                 mlx_put_image_to_window(game->mlx_ptr, game->window_ptr, game->wall, width * 32, height * 32);
-            else if (game->map[height][width] == '0')
+            else if (game->map[height][width] == EMPTY_SPACE)
                 mlx_put_image_to_window(game->mlx_ptr, game->window_ptr, game->empty_space, width * 32, height * 32);
-            else if (game->map[height][width] == 'P')
+            else if (game->map[height][width] == START_POINT)
                 mlx_put_image_to_window(game->mlx_ptr, game->window_ptr, game->character, width * 32, height * 32);
-            // else if (game->array[height][width] == 'C')
+            // else if (game->array[height][width] == COLLECTABLE)
             //     mlx_put_image_to_window(game->mlx_ptr, game->window_ptr, game->img.wall, width * 32, height * 32);
-            // else if (game->array[height][width] == 'E')
+            // else if (game->array[height][width] == EXIT_MAP)
             //     mlx_put_image_to_window(game->mlx_ptr, game->window_ptr, game->img.wall, width * 32, height * 32);
             width++;
         }

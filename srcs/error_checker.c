@@ -1,18 +1,18 @@
 
 #include "../includes/so_long.h"
 
-void    wrong_input(int sign)
+void wrong_input(int sign)
 {
     if (sign == 1)
-        printf("./so_long maps/filename.ber");
+        printf("./so_long maps/filename.ber\n");
     else if (sign == 2)
     {
         printf("Something does not seems right.\n");
-        printf("It can be a character, collectable, or exit.");
+        printf("It can be a character, collectable, or exit.\n");
     }
 }
 
-static  int  horizontal_wall(t_map *game)
+static int horizontal_wall(t_map *game)
 {
     int x;
     int y;
@@ -28,7 +28,7 @@ static  int  horizontal_wall(t_map *game)
     return (1);
 }
 
-static  int  vertical_wall(t_map *game)
+static int vertical_wall(t_map *game)
 {
     int height;
     int width;
@@ -44,7 +44,7 @@ static  int  vertical_wall(t_map *game)
     return (1);
 }
 
-static  void    if_walls(t_map *game)
+static void if_walls(t_map *game)
 {
     int vertical;
     int horizontal;
@@ -58,7 +58,7 @@ static  void    if_walls(t_map *game)
     }
 }
 
-static  void    count_checker(t_map *game, int height, int width)
+static void count_checker(t_map *game, int height, int width)
 {
     if (game->map[height][width] != '1' && game->map[height][width] != '0' && game->map[height][width] != 'P' && game->map[height][width] != 'E' && game->map[height][width] != 'C' && game->map[height][width] != '\n')
     {
@@ -83,14 +83,13 @@ void    character_valid(t_map *game)
     while (height < game->map_height - 1)
     {
         width = 0;
-        while (width < game->map_width)
+        while (width <= game->map_width)
         {
             count_checker(game, height, width);
             width++;
         }
         height++;
     }
-    printf("%d\n", game->countPlayer);
     if (!(game->countPlayer == 1))
     {
         wrong_input(2);
