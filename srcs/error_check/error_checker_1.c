@@ -12,13 +12,21 @@
 
 #include "../../includes/so_long.h"
 
-void wrong_input(int sign)
+void    print_Error()
+{
+    printf("Error\n");
+}
+
+void    wrong_input(int sign)
 {
     if (sign == 1)
+    {
+        print_Error();
         printf("./so_long maps/filename.ber\n");
+    }
     else if (sign == 2)
     {
-        printf("Something does not seems right.\n");
+        print_Error();
         printf("It can be a character, collectable, or exit.\n");
     }
 }

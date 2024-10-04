@@ -1,9 +1,5 @@
 
-#include "../includes/so_long.h"
-
-/*
-    map_specs.c (Map Specifications): How map and its requirements are created.
-*/
+#include "../../includes/so_long.h"
 
 void    place_character(t_map *game, int height, int width)
 {

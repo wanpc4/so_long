@@ -70,13 +70,13 @@ typedef struct s_map
     void        *exit;
 }   t_map;
 
-int     render_frame(t_map *map);
-int     on_destroy(t_map *data);
-int     read_map(t_map *game, char *argv[]);
-int     controls_working(int cmd, t_map *game);
-int     input_keyboard(int keysym, t_map *game);
-void    load_images(t_map *map);
-void    game_status(int sign);
+int             render_frame(t_map *map);
+int             on_destroy(t_map *data);
+int             read_map(t_map *game, char *argv[]);
+int             controls_working(int cmd, t_map *game);
+int             input_keyboard(int keysym, t_map *game);
+void            load_images(t_map *map);
+void            game_status(int sign);
 
 /*
     Functions for error handling
@@ -86,5 +86,6 @@ void            count_checker(t_map *game, int height, int width);
 void            wrong_input(int sign);
 void            check_errors(t_map *game);
 void            check_walls(t_map *game);
+void            print_Error();
 
 #endif

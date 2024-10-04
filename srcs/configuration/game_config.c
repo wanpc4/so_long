@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/so_long.h"
 
 void    game_status(int sign)
 {
@@ -67,12 +67,8 @@ int input_keyboard(int keysym, t_map *game)
         game_status(3);
         on_destroy(game);
     }
-
     if (game->map[move_up_down][move_left_right] != WALL) 
-    {
         character_move(game, move_up_down, move_left_right);
-    }
-
     return 0;
 }
 
