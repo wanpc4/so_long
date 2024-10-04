@@ -40,8 +40,8 @@
 
 #define ARROW_UP    65362
 #define ARROW_LEFT  65361
-#define ARROW_DOWN  65363
-#define ARROW_RIGHT 65364
+#define ARROW_DOWN  65364
+#define ARROW_RIGHT 65363
 
 #define KEY_ESC     65307
 #define KEY_Q       113
@@ -81,7 +81,10 @@ void    game_status(int sign);
 /*
     Functions for error handling
 */
-void    wrong_input(int sign);
-void    check_errors(t_map *game);
+void            character_valid(t_map *game);
+void            count_checker(t_map *game, int height, int width);
+void            wrong_input(int sign);
+void            check_errors(t_map *game);
+void            check_walls(t_map *game);
 
 #endif

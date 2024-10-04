@@ -42,8 +42,8 @@ int main(int argc, char *argv[])
     video_game_2d.window_ptr = mlx_new_window(video_game_2d.mlx_ptr, (video_game_2d.map_width * 32), (video_game_2d.map_height * 32), "so_long");
     load_images(&video_game_2d);
     render_frame(&video_game_2d);
-    //mlx_key_hook(video_game_2d.window_ptr, controls_working, &video_game_2d);
-    //mlx_hook(video_game_2d.window_ptr, KeyPress, KeyPressMask, input_keyboard, &video_game_2d);
+    //mlx_key_hook(video_game_2d.window_ptr, input_keyboard, &video_game_2d);
+    mlx_hook(video_game_2d.window_ptr, KeyPress, KeyPressMask, input_keyboard, &video_game_2d);
     mlx_hook(video_game_2d.window_ptr, 17, 0, (void *)exit, 0);
     mlx_loop(video_game_2d.mlx_ptr);
     return (0);

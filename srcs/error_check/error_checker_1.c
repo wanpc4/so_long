@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/so_long.h"
 
 void wrong_input(int sign)
 {
@@ -23,7 +23,7 @@ void wrong_input(int sign)
     }
 }
 
-static void count_checker(t_map *game, int height, int width)
+void count_checker(t_map *game, int height, int width)
 {
     if (game->map[height][width] != '1' && game->map[height][width] != '0' && game->map[height][width] != 'P' && game->map[height][width] != 'E' && game->map[height][width] != 'C' && game->map[height][width] != '\n')
     {

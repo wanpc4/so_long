@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/so_long.h"
 
 static int horizontal_wall(t_map *game)
 {
@@ -44,7 +44,7 @@ static int vertical_wall(t_map *game)
     return (1);
 }
 
-static void check_walls(t_map *game)
+void check_walls(t_map *game)
 {
     int vertical;
     int horizontal;

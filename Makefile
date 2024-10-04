@@ -19,11 +19,11 @@ SOURCES = minilibx-lib/libmlx_Linux.a \
 MAKE_SOURCES = srcs/so_long.c \
 			   srcs/generate_map.c \
 			   srcs/map_specs.c \
+			   srcs/character_controls.c \
 			   srcs/error_check/error_checker_1.c \
 			   srcs/error_check/error_checker_2.c \
 			   get_next_line/get_next_line.c \
-		  	   get_next_line/get_next_line_utils.c 
-#    srcs/character_controls.c
+		  	   get_next_line/get_next_line_utils.c
 
 $(NAME) :
 		make all -C minilibx-lib
