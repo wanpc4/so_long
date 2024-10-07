@@ -19,7 +19,24 @@ void    game_status(int sign)
     else if (sign == 2)
         printf("Try again.\n");
     else if (sign == 3)
-        printf("Quitting the game.\n");
+        printf("You must collect all collectables before entering exit point.\n");
+    else if (sign == 4)
+        printf("Quitting the game.\nThanks for playing!");
+}
+
+void    count_steps(t_map *game)
+{
+    printf("Current step count: %d\n", game->countMove);
+}
+
+void    update_character_position(t_map *game, int height_y, int width_x)
+{
+    game->map[game->y][game->x] = EMPTY_SPACE;
+    game->y = height_y;
+    game->x = width_x;
+    game->map[game->y][game->x] = START_POINT;
+    game->countMove++;
+    count_steps(game);
 }
 
 void    character_move(t_map *game, int height_y, int width_x)
@@ -28,26 +45,19 @@ void    character_move(t_map *game, int height_y, int width_x)
         return; // Prevent moving out of bounds
     if (game->map[height_y][width_x] == EXIT_MAP)
     {
-        game_status(3);
+        if (game->countColumn > 0)
+        {
+            game_status(3);
+            return;
+        }
+        game_status(4);
         on_destroy(game);
     }
-    else if (game->map[height_y][width_x] == EMPTY_SPACE)
+    else if (game->map[height_y][width_x] == EMPTY_SPACE || game->map[height_y][width_x] == COLLECTABLE)
     {
-        game->map[game->y][game->x] = EMPTY_SPACE;
-        game->y = height_y;
-        game->x = width_x;
-        game->map[game->y][game->x] = START_POINT;
-        game->countMove++;
-        render_frame(game);
-    }
-    else if (game->map[height_y][width_x] == COLLECTABLE)
-    {
-        game->map[game->y][game->x] = EMPTY_SPACE;
-        game->y = height_y;
-        game->x = width_x;
-        game->map[game->y][game->x] = START_POINT;
-        game->countColumn--;
-        game->countMove++;
+        if (game->map[height_y][width_x] == COLLECTABLE)
+            game->countColumn--;
+        update_character_position(game, height_y, width_x);
         render_frame(game);
     }
 }
@@ -67,7 +77,7 @@ int input_keyboard(int keysym, t_map *game)
         move_left_right++;
     else if (keysym == KEY_Q || keysym == KEY_ESC)
     {
-        game_status(3);
+        game_status(4);
         on_destroy(game);
     }
     if (game->map[move_up_down][move_left_right] != WALL) 

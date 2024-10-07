@@ -34,6 +34,8 @@ static  int add_line(t_map *game, char *line)
     i = 0;
     game->map_height++;
     temp = (char **)malloc(sizeof(char *) * (game->map_height + 1));
+    if (!temp)
+        return (0);
     temp[game->map_height] = NULL;
     while (i < game->map_height - 1)
     {
@@ -61,6 +63,10 @@ int read_map(t_map *game, char *argv[])
             break ;
     }
     close (game->fd);
-    game->map_width = map_size(game->map[0]);
+
+    if (game->map_height > 0)
+        game->map_width = map_size(game->map[0]);
+    else
+        return (0);
     return (1);
 }

@@ -4,7 +4,7 @@ NAME = so_long
 
 LIBFT_A = libft.a
 
-CFLAGS = -Wall -Wextra -Werror -I. -fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror -I. -g3
 
 MLX_FLAGS = -L ./Libft -lft -L ./minilibx-lib -lmlx -lXext -lX11
 

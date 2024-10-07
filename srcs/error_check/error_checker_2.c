@@ -53,7 +53,7 @@ void check_walls(t_map *game)
     horizontal = horizontal_wall(game);
     if (!vertical || !horizontal)
     {
-        perror("\nMissing walls");
+        wrong_input(3);
         on_destroy(game);
     }
 }

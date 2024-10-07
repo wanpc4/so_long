@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   graphic_config.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwan-ab- <wwan-ab-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wwan-ab- <wwan-ab-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 14:37:20 by wwan-ab-          #+#    #+#             */
 /*   Updated: 2024/10/07 14:42:37 by wwan-ab-         ###   ########.fr       */
@@ -47,7 +47,7 @@ int render_frame(t_map *game)
     while (height < game->map_height)
     {
         width = 0;
-        while (game->map[height][width])
+        while (width < game->map_width)
         {
             if (game->map[height][width] == WALL)
                 mlx_put_image_to_window(game->mlx_ptr, game->window_ptr, game->wall, width * 32, height * 32);

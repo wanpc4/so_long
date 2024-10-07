@@ -22,12 +22,18 @@ void    wrong_input(int sign)
     if (sign == 1)
     {
         print_Error();
+        printf("Your execution file should be like this:\n");
         printf("./so_long maps/filename.ber\n");
     }
     else if (sign == 2)
     {
         print_Error();
-        printf("It can be a character, collectable, or exit.\n");
+        printf("It can be a character, collectable, or exit.\nPlease check your map.");
+    }
+    else if (sign == 3)
+    {
+        print_Error();
+        printf("Missing Walls. \nPlease check your map.");
     }
 }
 

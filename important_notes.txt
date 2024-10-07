@@ -57,3 +57,26 @@ gcc srcs/so_long.c srcs/generate_map.c srcs/error_checker.c srcs/map_specs.c get
 
 At campus:
 gcc srcs/so_long.c srcs/generate_map.c srcs/error_checker.c srcs/map_specs.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c -o so_long -L/home/wwan-ab-/Desktop/so_long/minilibx-lib -lmlx -L/home/wwan-ab-/Desktop/so_long/Libft -lft -lXext -lX11
+
+
+Yes, it seems like the issues you're encountering are related to the `-fsanitize=address` flag, which is used for memory debugging with AddressSanitizer. Here are a few key points about how it can impact your program:
+
+1. **Segmentation Faults**: When AddressSanitizer detects a memory error, it can terminate the program with a segmentation fault. This is what you're seeing with the "DEADLYSIGNAL" messages.
+
+2. **Interference with Valgrind**: AddressSanitizer and Valgrind can conflict with each other. If you're running Valgrind with a program that was compiled with AddressSanitizer, it can cause unexpected behavior or errors. Valgrind is designed to analyze memory usage, while AddressSanitizer is more focused on detecting specific memory errors.
+
+3. **Debugging**: While AddressSanitizer can provide detailed reports on memory errors, it can also produce a lot of output if there are multiple issues, making it harder to debug if you're not specifically looking for those errors.
+
+### Suggestions
+
+- **Switch Between Sanitizers and Valgrind**: If you want to use Valgrind for memory checking, consider removing the `-fsanitize=address` flag and compile your program without it.
+
+- **Focus on One Tool at a Time**: Use AddressSanitizer to catch memory-related bugs during development, but when you want to perform thorough memory checking, switch to Valgrind.
+
+- **Check Your Code**: Look for common issues that could cause memory errors, such as:
+  - Accessing uninitialized memory.
+  - Buffer overflows.
+  - Double freeing memory.
+  - Accessing freed memory.
+
+If you fix the underlying issues in your code, the problems with AddressSanitizer should resolve, and you can benefit from its memory checking capabilities. Let me know if you need help troubleshooting specific parts of your code!
