@@ -27,7 +27,10 @@ void    character_move(t_map *game, int height_y, int width_x)
     if (height_y < 0 || height_y >= game->map_height || width_x < 0 || width_x >= game->map_width)
         return; // Prevent moving out of bounds
     if (game->map[height_y][width_x] == EXIT_MAP)
+    {
+        game_status(3);
         on_destroy(game);
+    }
     else if (game->map[height_y][width_x] == EMPTY_SPACE)
     {
         game->map[game->y][game->x] = EMPTY_SPACE;

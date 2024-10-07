@@ -19,10 +19,13 @@ int on_destroy(t_map *game)
     line = 0;
     if (game->window_ptr)
         mlx_destroy_window(game->mlx_ptr, game->window_ptr);
-    free(game->mlx_ptr);
-    while (line < game->map_height - 1)
-        free(game->map[line++]);
+    while (line < game->map_height)
+    {
+        free(game->map[line]);
+        line++;
+    }
     free(game->map);
+    free(game->mlx_ptr);
     exit(0);
 }
 

@@ -50,23 +50,3 @@ char	*get_next_line(int fd)
 	str = ft_update_str(str);
 	return (line);
 }
-/*
-int main()
-{
-	int fd = open("../maps/map1.ber", O_RDONLY);
-	char *line;
-
-	while (1)
-	{
-		line = get_next_line(fd);
-		if (line)
-		{
-			printf("%s",line);
-		}
-		else
-			break;
-	}
-	
-
-}
-*/

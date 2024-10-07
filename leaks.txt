@@ -1,0 +1,42 @@
+u91z08s04% ./so_long maps/map1.ber
+Quitting the game.
+
+=================================================================
+==342444==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 23 byte(s) in 1 object(s) allocated from:
+    #0 0x7c5e4cab4887 in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x5e87f26f2f75 in ft_extract_line get_next_line/get_next_line_utils.c:80
+    #2 0x5e87f26f29ab in get_next_line get_next_line/get_next_line.c:50
+    #3 0x5e87f26f19fd in read_map srcs/configuration/map_config.c:59
+    #4 0x5e87f26efd58 in main srcs/main/so_long.c:39
+    #5 0x7c5e4c629d8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+SUMMARY: AddressSanitizer: 23 byte(s) leaked in 1 allocation(s).
+
+The issues you've encountered, including segmentation faults and memory leaks, could indeed be related to how the `on_destroy` function handles memory. However, they're likely the result of a combination of factors, not just that function alone. Here are the main points to consider:
+
+### 1. **Memory Ownership**
+   - **Add Line Logic**: In the `add_line` function, when you add a new line to the map, you need to ensure that you don't inadvertently free memory that's still in use. If `add_line` takes ownership of the line, then you shouldn't free it again in `read_map`.
+   
+### 2. **Freeing Memory in `on_destroy`**
+   - The `on_destroy` function is where you clean up all allocated resources. If you free memory that other parts of your program still reference or fail to free all allocated memory, it can lead to memory leaks or segmentation faults.
+   - Make sure you're freeing every dynamically allocated array or pointer and that you're not double freeing any pointers.
+
+### 3. **Error Handling**
+   - In `read_map`, if there are any errors in reading or adding lines, ensure that you handle them gracefully. Failing to handle errors might leave dangling pointers or unfreed memory.
+
+### 4. **Accessing Freed Memory**
+   - If your program tries to read from or write to memory after it has been freed (like in the `character_move` or `input_keyboard` functions), this can cause segmentation faults.
+
+### Summary
+- **Memory management**: Ensure proper ownership and freeing of allocated memory.
+- **Error handling**: Always check the results of memory allocations and file operations.
+- **Clean exit**: The `on_destroy` function should reliably free all resources when the game quits.
+
+### Debugging Steps
+To identify specific causes of the issues:
+- **Use Valgrind**: It helps pinpoint where memory leaks and invalid accesses occur.
+- **Add Logging**: Print debug statements in key functions to track memory allocation and deallocation.
+
+If you clean up memory management and ensure proper error handling, it should help resolve the issues you're facing. If you have specific parts of the code or errors that are still unclear, feel free to share!

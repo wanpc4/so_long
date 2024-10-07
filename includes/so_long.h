@@ -71,6 +71,7 @@ typedef struct s_map
 }   t_map;
 
 int             render_frame(t_map *map);
+void            free_map(t_map *game);
 int             on_destroy(t_map *data);
 int             read_map(t_map *game, char *argv[]);
 int             controls_working(int cmd, t_map *game);

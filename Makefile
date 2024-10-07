@@ -6,8 +6,7 @@ LIBFT_A = libft.a
 
 CFLAGS = -Wall -Wextra -Werror -I. -fsanitize=address -g3
 
-MLX_FLAGS = -L/home/idriss/Desktop/so_long/minilibx-lib -lmlx \
-			-L/home/idriss/Desktop/so_long/Libft -lft -lXext -lX11
+MLX_FLAGS = -L ./Libft -lft -L ./minilibx-lib -lmlx -lXext -lX11
 
 REMOVE = rm -rf
 
@@ -16,13 +15,9 @@ SOURCES = minilibx-lib/libmlx_Linux.a \
 		  Libft/libft.a 
 
 MAKE_SOURCES = srcs/main/so_long.c \
-			   srcs/configuration/map_config.c \
-			   srcs/configuration/graphic_config.c \
-			   srcs/configuration/game_config.c \
-			   srcs/error_check/error_checker_1.c \
-			   srcs/error_check/error_checker_2.c \
-			   get_next_line/get_next_line.c \
-		  	   get_next_line/get_next_line_utils.c
+			   srcs/configuration/*.c \
+			   srcs/error_check/*.c \
+			   get_next_line/*.c \
 
 $(NAME) :
 		make all -C minilibx-lib
