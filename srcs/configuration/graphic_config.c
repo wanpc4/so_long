@@ -12,7 +12,7 @@
 
 #include "../../includes/so_long.h"
 
-void	place_character(t_map *game, int height, int width)
+void	place_character(t_map *game, int width, int height)
 {
 	mlx_put_image_to_window(game->mlx_ptr, game->window_ptr,
 		game->character, width * 32, height * 32);
@@ -20,14 +20,14 @@ void	place_character(t_map *game, int height, int width)
 	game->x = width;
 }
 
-void	place_collectable(t_map *game, int height, int width)
+void	place_collectable(t_map *game, int width, int height)
 {
 	mlx_put_image_to_window(game->mlx_ptr, game->window_ptr,
 		game->collectable, width * 32, height * 32);
 	game->collectable_item++;
 }
 
-void	place_tiles(t_map *game, char type, int height, int width)
+void	place_tiles(t_map *game, char type, int width, int height)
 {
 	if (type == WALL)
 		mlx_put_image_to_window(game->mlx_ptr, game->window_ptr,
@@ -70,15 +70,15 @@ int	render_frame(t_map *game)
 		while (width < game->map_width)
 		{
 			if (game->map[height][width] == WALL)
-				place_tiles(game, WALL, height, width);
+				place_tiles(game, WALL, width, height);
 			else if (game->map[height][width] == EMPTY_SPACE)
-				place_tiles(game, EMPTY_SPACE, height, width);
+				place_tiles(game, EMPTY_SPACE, width, height);
 			else if (game->map[height][width] == START_POINT)
-				place_character(game, height, width);
+				place_character(game, width, height);
 			else if (game->map[height][width] == COLLECTABLE)
-				place_collectable(game, height, width);
+				place_collectable(game, width, height);
 			else if (game->map[height][width] == EXIT_MAP)
-				place_tiles(game, EXIT_MAP, height, width);
+				place_tiles(game, EXIT_MAP, width, height);
 			width++;
 		}
 		height++;

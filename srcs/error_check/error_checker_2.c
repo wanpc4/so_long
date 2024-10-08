@@ -12,24 +12,24 @@
 
 #include "../../includes/so_long.h"
 
-static	int	horizontal_wall(t_map *game)
+static	int	vertical_wall(t_map *game)
 {
-	int	x;
-	int	y;
+	int	height;
+	int	width;
 
-	x = game->map_width;
-	y = 0;
-	while (y < x)
+	height = 0;
+	width = game->map_width;
+	while (height < width)
 	{
-		if (game->map[0][x] == '1'
-		&& game->map[game->map_height - 1][y] == '1')
+		if (game->map[0][width] == '1'
+		&& game->map[game->map_height - 1][height] == '1')
 			return (0);
-		y++;
+		height++;
 	}
 	return (1);
 }
 
-static	int	vertical_wall(t_map *game)
+static	int	horizontal_wall(t_map *game)
 {
 	int	height;
 	int	width;

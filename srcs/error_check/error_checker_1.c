@@ -28,7 +28,7 @@ void	wrong_input(int sign)
 	else if (sign == 2)
 	{
 		print_error();
-		printf("It can be a character, collectable, or exit.");
+		printf("It can be a character, collectable, or exit.\n");
 		printf("Please check your map.\n");
 	}
 	else if (sign == 3)
@@ -50,10 +50,10 @@ void	count_checker(t_map *game, int height, int width)
 		printf("\nError at %c\n", game->map[height][width]);
 		on_destroy(game);
 	}
-	if (game->map[height][width] == 'C')
-		game->count_column++;
 	if (game->map[height][width] == 'P')
-		game->count_player++;
+		game->count_character++;
+	if (game->map[height][width] == 'C')
+		game->count_collectable++;
 	if (game->map[height][width] == 'E')
 		game->count_exit++;
 }
@@ -74,7 +74,7 @@ void	character_valid(t_map *game)
 		}
 		height++;
 	}
-	if (!(game->count_player == 1 && game->count_column > 1
+	if (!(game->count_character == 1 && game->count_collectable > 1
 			&& game->count_exit == 1))
 	{
 		wrong_input(2);

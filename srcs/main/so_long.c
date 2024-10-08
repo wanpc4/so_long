@@ -16,17 +16,28 @@ int	on_destroy(t_map *game)
 {
 	int	line;
 
-	line = 0;
 	if (game->window_ptr)
 		mlx_destroy_window(game->mlx_ptr, game->window_ptr);
-	while (line < game->map_height)
+	if (game->map)
 	{
-		free(game->map[line]);
-		line++;
+		line = 0;
+		while (line < game->map_height)
+			free(game->map[line++]);
+		free(game->map);
 	}
-	free(game->map);
-	free(game->mlx_ptr);
-	exit(0);
+	if (game->wall)
+		mlx_destroy_image(game->mlx_ptr, game->wall);
+	if (game->character)
+		mlx_destroy_image(game->mlx_ptr, game->character);
+	if (game->empty_space)
+		mlx_destroy_image(game->mlx_ptr, game->empty_space);
+	if (game->collectable)
+		mlx_destroy_image(game->mlx_ptr, game->collectable);
+	if (game->exit)
+		mlx_destroy_image(game->mlx_ptr, game->exit);
+	if (game->mlx_ptr)
+		free(game->mlx_ptr);
+	exit(EXIT_SUCCESS);
 }
 
 int	main(int argc, char *argv[])

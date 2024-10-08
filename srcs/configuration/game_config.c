@@ -18,14 +18,10 @@ void	game_status(int sign)
 		printf("You won the game, congratulations!\n");
 	else if (sign == 2)
 	{
-		printf("Try again.\n");
+		printf("You must collect all diamonds ");
+		printf("before entering nether portal.\n");
 	}
 	else if (sign == 3)
-	{
-		printf("You must collect all diamonds ");
-		printf("before entering exit point.\n");
-	}
-	else if (sign == 4)
 	{
 		printf("Quitting the game.\nThanks for playing!\n");
 	}
@@ -36,7 +32,7 @@ void	count_steps(t_map *game)
 	printf("Current step count: %d\n", game->count_move);
 }
 
-void	update_character_position(t_map *game, int height_y, int width_x)
+void	update_character_position(t_map *game, int width_x, int height_y)
 {
 	game->map[game->y][game->x] = EMPTY_SPACE;
 	game->y = height_y;
@@ -53,9 +49,9 @@ void	character_move(t_map *game, int height_y, int width_x)
 		return ;
 	if (game->map[height_y][width_x] == EXIT_MAP)
 	{
-		if (game->count_column > 0)
+		if (game->count_collectable > 0)
 		{
-			game_status(3);
+			game_status(2);
 			return ;
 		}
 		game_status(1);
@@ -65,8 +61,8 @@ void	character_move(t_map *game, int height_y, int width_x)
 		|| game->map[height_y][width_x] == COLLECTABLE)
 	{
 		if (game->map[height_y][width_x] == COLLECTABLE)
-			game->count_column--;
-		update_character_position(game, height_y, width_x);
+			game->count_collectable--;
+		update_character_position(game, width_x, height_y);
 		render_frame(game);
 	}
 }
@@ -88,7 +84,7 @@ int	input_keyboard(int keysym, t_map *game)
 		move_left_right++;
 	else if (keysym == KEY_Q || keysym == KEY_ESC)
 	{
-		game_status(4);
+		game_status(3);
 		on_destroy(game);
 	}
 	if (game->map[move_up_down][move_left_right] != WALL)

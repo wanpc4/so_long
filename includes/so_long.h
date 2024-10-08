@@ -50,8 +50,8 @@ typedef struct s_map
 	int		y;
 	int		map_height;
 	int		map_width;
-	int		count_player;
-	int		count_column;
+	int		count_character;
+	int		count_collectable;
 	int		count_exit;
 	int		count_move;
 	int		collectable_item;
