@@ -33,7 +33,7 @@ void	game_status(int sign)
 
 void	count_steps(t_map *game)
 {
-	printf("Current step count: %d\n", game->countMove);
+	printf("Current step count: %d\n", game->count_move);
 }
 
 void	update_character_position(t_map *game, int height_y, int width_x)
@@ -42,7 +42,7 @@ void	update_character_position(t_map *game, int height_y, int width_x)
 	game->y = height_y;
 	game->x = width_x;
 	game->map[game->y][game->x] = START_POINT;
-	game->countMove++;
+	game->count_move++;
 	count_steps(game);
 }
 
@@ -53,7 +53,7 @@ void	character_move(t_map *game, int height_y, int width_x)
 		return ;
 	if (game->map[height_y][width_x] == EXIT_MAP)
 	{
-		if (game->countColumn > 0)
+		if (game->count_column > 0)
 		{
 			game_status(3);
 			return ;
@@ -65,7 +65,7 @@ void	character_move(t_map *game, int height_y, int width_x)
 		|| game->map[height_y][width_x] == COLLECTABLE)
 	{
 		if (game->map[height_y][width_x] == COLLECTABLE)
-			game->countColumn--;
+			game->count_column--;
 		update_character_position(game, height_y, width_x);
 		render_frame(game);
 	}
