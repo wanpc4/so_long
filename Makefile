@@ -6,12 +6,12 @@ LIBFT_A = libft.a
 
 CFLAGS = -Wall -Wextra -Werror -I. -g3
 
-MLX_FLAGS = -L ./Libft -lft -L ./minilibx-lib -lmlx -lXext -lX11
+MLX_FLAGS = -L ./Libft -lft -L ./minilibx-linux -lmlx -lXext -lX11
 
 REMOVE = rm -rf
 
-SOURCES = minilibx-lib/libmlx_Linux.a \
-		  minilibx-lib/libmlx.a \
+SOURCES = minilibx-linux/libmlx_Linux.a \
+		  minilibx-linux/libmlx.a \
 		  Libft/libft.a 
 
 MAKE_SOURCES = srcs/main/so_long.c \
@@ -20,7 +20,7 @@ MAKE_SOURCES = srcs/main/so_long.c \
 			   get_next_line/*.c \
 
 $(NAME) :
-		make all -C minilibx-lib
+		make all -C minilibx-linux
 		make all -C Libft
 		$(CC) $(CFLAGS) $(MAKE_SOURCES) -o $(NAME) \
 		$(MLX_FLAGS)
@@ -34,7 +34,7 @@ fclean: clean
 
 clean:
 		$(REMOVE) $(NAME)
-		make clean -C minilibx-lib
+		make clean -C minilibx-linux
 		make clean -C Libft
 
 re: fclean all

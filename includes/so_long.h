@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <fcntl.h>
-# include "../minilibx-lib/mlx.h"
+# include "../minilibx-linux/mlx.h"
 # include "../Libft/libft.h"
 # include "get_next_line.h"
 # include <X11/X.h>
